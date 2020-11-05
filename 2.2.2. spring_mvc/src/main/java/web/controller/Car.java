@@ -14,12 +14,11 @@ public class Car {
     private CarService carService;
 
     @GetMapping("/cars")
-    public String getCars(@RequestParam(value = "count", required = false) String count, ModelMap modelMap){
-
-        if (count == null || Integer.parseInt(count) >= 5) {
-            modelMap.addAttribute("cars", carService.listCars(5));
+    public String getCars(@RequestParam(value = "count", defaultValue = "5") int count, ModelMap modelMap){
+        if (count >= 0 && count <= 5) {
+            modelMap.addAttribute("cars", carService.listCars(count));
         } else {
-            modelMap.addAttribute("cars", carService.listCars(Integer.parseInt(count)));
+            modelMap.addAttribute("cars", carService.listCars(5));
         }
         return "cars";
     }

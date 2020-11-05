@@ -10,13 +10,13 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "marka")
+    @Column
     private String marka;
 
-    @Column(name = "model")
+    @Column
     private String model;
 
-    @Column(name = "series")
+    @Column
     private int series;
 
     public Car() {}
